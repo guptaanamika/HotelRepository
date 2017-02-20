@@ -13,7 +13,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @ComponentScan({ "com.booking" })
 @EnableAspectJAutoProxy
 @EnableScheduling
-@PropertySource("file:${config.path:src/main/resources/conf}/application.properties")
+//@PropertySource("file:${config.path:src/main/resources/conf}/application.properties")
 public class HotelApplication {
 
 	public static void main(String[] args) {
