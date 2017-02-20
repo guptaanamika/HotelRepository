@@ -5,14 +5,14 @@ Code is written in Java with Spring Framework.
 
 Persistence Storage Used are Mysql and Elastic Search , which are embedded one for this project to avoid external dependency.
 
-To Start the service follow the step : 
-1. Git Clone
-git clone  https://github.com/guptaanamika/HotelRepository.git .
-2. Build classes and run Junit 
-cd HotelRepository
-mvn clean install
-3. Run Service
-java -jar HotelRepositoryService/target/HotelRepositoryService.jar
+### To Start the service follow the step : 
+1. Git Clone <n>
+$ git clone  https://github.com/guptaanamika/HotelRepository.git .
+2. Build classes and run Junit .
+$ cd HotelRepository
+$ mvn clean install
+3. Run Service .
+$ java -jar HotelRepositoryService/target/HotelRepositoryService.jar
 
 
 Now, your service has started on http://localhost:8080.
