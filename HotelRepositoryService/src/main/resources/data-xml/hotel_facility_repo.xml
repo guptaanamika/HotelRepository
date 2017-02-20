@@ -1,0 +1,44 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hotelFacilityRegistration">
+
+	<resultMap id="hotel_facility_map"
+		type="com.booking.repository.dao.entity.HotelFacilityEntity">
+		<result property="id" column="id" />
+		<result property="facilityType" column="facility_type" />
+		<result property="facilityDesc" column="facility_desc" />
+		<result property="createdOn" column="created_on" />
+		<result property="createdBy" column="created_by" />
+		<result property="updatedOn" column="updated_on" />
+		<result property="updatedBy" column="updated_by" />
+	</resultMap>
+
+
+
+	<sql id="result_set">
+		id,facility_type,facility_desc,created_on,created_by,updated_on,updated_by
+	</sql>
+
+	<insert id="addFacility"
+		parameterType="com.booking.repository.dao.entity.HotelFacilityEntity">
+		INSERT INTO hotel_facility_info (
+		<include refid="result_set" />
+		) VALUES ( #{id},
+		#{facilityType}, #{facilityDesc},
+		#{createdOn},
+		#{createdBy},
+		#{updatedOn}, #{updatedOn} );
+	</insert>
+
+	<delete id="removeFacility" parameterType="java.lang.String">
+		delete from
+		hotel_facility_info
+		WHERE id=#{id}
+	</delete>
+
+	<select id="getHotelFacilities" parameterType="java.lang.String"
+		resultMap="hotel_facility_map">
+		SELECT
+		<include refid="result_set" />
+		FROM hotel_facility_info WHERE id=#{id}
+	</select>
+</mapper>

@@ -1,0 +1,73 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hotelRegistration">
+
+	<resultMap id="hotel_info_map" type="com.booking.repository.dao.entity.HotelEntity">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="version" column="version" />
+		<result property="address" column="address" />
+		<result property="contact" column="contact" />
+		<result property="starRanking" column="star_ranking" />
+		<result property="numberOfRooms" column="number_of_rooms" />
+		<result property="createdOn" column="created_on" />
+		<result property="createdBy" column="created_by" />
+		<result property="updatedOn" column="updated_on" />
+		<result property="updatedBy" column="updated_by" />
+	</resultMap>
+
+
+
+	<sql id="result_set">
+		id,name,version,address,contact,star_ranking,number_of_rooms,created_on,created_by,updated_on,updated_by
+	</sql>
+
+	<insert id="addHotel" parameterType="com.booking.repository.dao.entity.HotelEntity">
+		INSERT INTO hotel_info (
+		<include refid="result_set" />
+		) VALUES ( #{id},
+		#{name}, #{version}, #{address}, #{contact},
+		#{starRanking}, #{numberOfRooms},
+		#{createdOn}, #{createdBy},
+		#{updatedOn}, #{updatedOn} );
+	</insert>
+
+	<select id="getHotelById" parameterType="java.lang.String"
+		resultMap="hotel_info_map">
+		SELECT
+		<include refid="result_set" />
+		FROM hotel_info WHERE id=#{id}
+	</select>
+
+	<update id="updateHotelById" parameterType="com.booking.repository.dao.entity.HotelEntity">
+		UPDATE
+		hotel_info
+		SET
+		<if test="name != null">
+			name=#{name}
+		</if>
+		<if test="address != null">
+			,address=#{address}
+		</if>
+		<if test="contact != null">
+			,contact=#{contact}
+		</if>
+		<if test="starRanking != null">
+			,star_ranking=#{starRanking}
+		</if>
+		<if test="numberOfRooms != null">
+			,number_of_rooms=#{numberOfRooms}
+		</if>
+		,version=version+1,updated_on=now(3),updated_by=#{updatedBy}
+		WHERE
+		id
+		=
+		#{id} and version = #{version}
+	</update>
+
+	<delete id="removeHotelById" parameterType="java.lang.String">
+		delete from
+		hotel_info
+		WHERE
+		id = #{id}
+	</delete>
+</mapper>
