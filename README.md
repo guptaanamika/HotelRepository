@@ -19,3 +19,6 @@ Now, your service has started on http://localhost:8080.
 Use HotelRepositoryTest , in Client to play around with service API.
 
 To locally explore more use cases , you can explore Junits in HotelRepositoryService.
+
+More on architect can be found in doc
+https://docs.google.com/document/d/1qhMQEu5GCdHPsBRwZXo2uEhYcaLeDwJSxABpIp-OD2o/edit?usp=sharing
